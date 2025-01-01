@@ -1,0 +1,14 @@
+version: "3.3"
+
+networks:
+  influx_influx:
+    external: true
+
+services:
+  influxdb:
+    image: telegraf:latest
+    container_name: telegraf
+    restart: always
+    networks: [influx_influx]
+    volumes:
+      - /home/javier/docker/telegraf/telegrafdocker.conf:/etc/telegraf/telegraf.conf

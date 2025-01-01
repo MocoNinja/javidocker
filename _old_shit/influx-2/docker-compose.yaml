@@ -1,0 +1,24 @@
+version: "3.3"
+
+networks:
+  influx-v2:
+    external: false
+
+services:
+  influx-v2:
+    image: influxdb:latest
+    container_name: influx-v2
+    restart: unless-stopped
+    networks: [influx-v2]
+    ports:
+      - "8086:8086"
+    volumes:
+      - ./data:/var/lib/influxdb2
+      - ./config:/etc/influxdb2
+    environment:
+      - DOCKER_INFLUXDB_INIT_USERNAME
+      - DOCKER_INFLUXDB_INIT_PASSWORD
+      - DOCKER_INFLUXDB_INIT_ORG
+      - DOCKER_INFLUXDB_INIT_BUCKET
+      - DOCKER_INFLUXDB_INIT_RETENTION
+      - DOCKER_INFLUXDB_INIT_MODE

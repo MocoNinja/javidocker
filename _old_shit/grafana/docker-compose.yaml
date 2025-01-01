@@ -1,0 +1,23 @@
+version: "3.3"
+
+networks:
+  influx-2_influx-v2:
+    external: true
+  prometheus_prometheus:
+    external: true
+
+services:
+  influxdb:
+    image: grafana/grafana:latest-ubuntu
+    container_name: grafana
+    restart: unless-stopped
+    networks: [influx-2_influx-v2, prometheus_prometheus]
+    volumes:
+      - ./grafana-data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_AUTH_DISABLE_LOGIN_FORM=false
+      - GF_SECURITY_ALLOW_EMBEDDING=true
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer

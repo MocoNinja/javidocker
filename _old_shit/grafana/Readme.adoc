@@ -1,0 +1,6 @@
+= Contenedor grafana
+
+== Consideraciones
+
+- Si se quiere persistir los datos en un directorio, este tiene que tener los permisos adecuados para el user que corre el contenedor de grafana; este es el UID: 472
+sudo chown -R 472:472 grafana-data/

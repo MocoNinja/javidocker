@@ -1,0 +1,24 @@
+version: '3.3'
+services:
+  linuxserver-plex:
+    container_name: plex-server
+    restart: unless-stopped
+    image: lscr.io/linuxserver/plex
+    network_mode: host
+    environment: 
+    - TZ=Europe/Madrid
+    - PUID=1000
+    - PGID=1000
+    - VERSION=latest
+    ports:
+    - "32400:32400"
+    volumes:
+    - /mnt/Estraible/.PLEX/DB:/config
+    - /mnt/Estraible/.PLEX/TRANSCODE:/transcode
+    - /mnt/Estraible/VIDEO/PELIS:/data/movies
+    - /mnt/Estraible/VIDEO/SERIES:/data/shows
+    - /mnt/Estraible/VIDEO/ANIMACION:/data/animation
+    - /mnt/Estraible/VIDEO/DOCUMENTALES:/data/documentaries
+    - /mnt/Estraible/VIDEO/CLIPS:/data/clips
+    - /mnt/Estraible/MUSIC:/data/musikei
+    - /mnt/Estraible/PHOTOS:/data/photos
