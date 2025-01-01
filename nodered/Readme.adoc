@@ -1,0 +1,9 @@
+= Node Red
+
+== Permisos
+
+`sudo chown -R 1000:1000 data`
+
+== Red
+
+Con la config, puedes acceder a cosas instaladas `de verdad` usando como url `host.docker.internal`.
